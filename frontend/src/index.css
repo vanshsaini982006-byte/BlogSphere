@@ -1,0 +1,54 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-paper dark:bg-paper-dark text-ink dark:text-ink-light font-sans antialiased transition-colors duration-300;
+  }
+  ::selection {
+    @apply bg-spine-300/50;
+  }
+  :focus-visible {
+    outline: 2px solid theme("colors.spine.500");
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+  h1, h2, h3, h4 {
+    @apply font-display;
+  }
+}
+
+@layer components {
+  .link-underline {
+    background-image: linear-gradient(currentColor, currentColor);
+    background-position: 0% 100%;
+    background-repeat: no-repeat;
+    background-size: 0% 1.5px;
+    transition: background-size 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .link-underline:hover {
+    background-size: 100% 1.5px;
+  }
+
+  .prose-article p:first-of-type::first-letter {
+    float: left;
+    font-family: "Fraunces", serif;
+    font-size: 4.2rem;
+    line-height: 0.8;
+    font-weight: 600;
+    padding-right: 0.5rem;
+    padding-top: 0.4rem;
+    color: theme("colors.spine.600");
+  }
+  .dark .prose-article p:first-of-type::first-letter {
+    color: theme("colors.spine.300");
+  }
+
+  .skeleton {
+    @apply bg-gradient-to-r from-paper-soft via-white/60 to-paper-soft dark:from-paper-darksoft dark:via-white/5 dark:to-paper-darksoft bg-[length:200%_100%] animate-shimmer rounded-lg;
+  }
+}
